@@ -1,2 +1,2 @@
-# puppet-bolt-dovecot-statistics
-puppet-bolt-dovecot-statistics
+# vagrant-bolt-dovecot-statistics
+vagrant-bolt-dovecot-statistics
