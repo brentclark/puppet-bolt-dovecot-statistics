@@ -1,0 +1,74 @@
+---
+
+classes:
+  - timezone
+
+# https://github.com/kenyon/puppet
+timezone::timezone: Africa/Johannesburg
+apt::apt_update_frequency: always
+apt::update::frequency: always
+apt::purge:
+  sources.list: true
+  sources.list.d: true
+  preferences: true
+  preferences.d: true
+unattended_upgrades::syslog_enable: true
+dovecot::install::package_ensure: latest
+dovecot::install::packages:
+  - dovecot-core
+  - dovecot-imapd
+  - dovecot-lmtpd
+  - dovecot-managesieved
+  - dovecot-pop3d
+  - dovecot-sieve
+apt::sources:
+  debian:
+    location: https://deb.debian.org/debian
+    release: '%{facts.os.distro.codename}'
+    repos: main contrib non-free
+    include:
+      src: false
+      deb: true
+  backports:
+    location: https://deb.debian.org/debian
+    release: '%{facts.os.distro.codename}-backports'
+    repos: main contrib non-free
+    include:
+      src: false
+      deb: true
+  updates:
+    location: https://deb.debian.org/debian
+    release: '%{facts.os.distro.codename}-updates'
+    repos: main contrib non-free
+    include:
+      src: false
+      deb: true
+  security:
+    location: https://deb.debian.org/debian-security
+    release: '%{facts.os.distro.codename}-security'
+    repos: main contrib non-free
+    include:
+      src: false
+      deb: true
+  dovecot:
+    location: 'https://repo.dovecot.org/ce-2.3.19/debian/%{::lsbdistcodename}'
+    repos: main
+    release: '%{::lsbdistcodename}'
+    key:
+      id: 2BE74AAB3EE754DFB9C80D3318A348AEED409DA1
+      server: hkp://keyserver.ubuntu.com:80
+    include:
+      src: false
+      deb: true
+apt::pins:
+  dovecot:
+    priority: 1001
+    explanation: 'dovecot: repo.dovecot.org'
+    release: '%{::lsbdistcodename}'
+    packages:
+      - dovecot-core
+      - dovecot-imapd
+      - dovecot-lmtpd
+      - dovecot-managesieved
+      - dovecot-pop3d
+      - dovecot-sieve

@@ -1,0 +1,30 @@
+---
+#12:05 $ vagrant ssh-config 
+#Host default
+#  HostName 127.0.0.1
+#  User vagrant
+#  Port 2222
+#  UserKnownHostsFile /dev/null
+#  StrictHostKeyChecking no
+#  PasswordAuthentication no
+#  IdentityFile /tmp/vagrant-bolt-dovecot-statistics/.vagrant/machines/default/virtualbox/private_key
+#  IdentitiesOnly yes
+#  LogLevel FATAL
+
+version: 2
+groups:
+  - name: linux
+    targets:
+      - name: vagrant
+        uri: ssh://127.0.0.1:2222
+        config:
+          transport: ssh
+          ssh:
+            private-key: ../.vagrant/machines/default/virtualbox/private_key
+config:
+  transport: ssh
+  ssh:
+    user: vagrant
+    password: vagrant
+    host-key-check: false
+    run-as: root

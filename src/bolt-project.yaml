@@ -1,0 +1,11 @@
+---
+name: vagrant_bolt_dovecot_statistics
+modules:
+- cirrax/dovecot
+- puppetlabs/facts
+- puppetlabs/apt
+- puppetlabs/stdlib
+- puppetlabs/concat
+- puppet/unattended_upgrades
+- puppet/chrony
+- saz/timezone

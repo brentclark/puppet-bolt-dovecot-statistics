@@ -1,0 +1,10 @@
+# hiera.yaml
+version: 5
+
+hierarchy:
+  - name: "Node Data"
+    path: "nodes/%{trusted.certname}.yaml"
+  - name: "FQDN Node Data"
+    path: "nodes/%{fqdn}.yaml"
+  - name: "Common data"
+    path: "common.yaml"
