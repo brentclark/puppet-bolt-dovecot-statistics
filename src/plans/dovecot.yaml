@@ -28,10 +28,10 @@ steps:
       - class: timezone
         #      - class: dovecot
 
-  - upload: logging.conf
-    destination: /etc/dovecot/conf.d/logging.conf
-    targets: $targets
-    description: "Upload dovecot stats"
+        #  - upload: logging.conf
+        #    destination: /etc/dovecot/conf.d/logging.conf
+        #    targets: $targets
+        #    description: "Upload dovecot stats"
 
 # The return key sets the return value of the plan.
-return: $command_step
+return: $install_dovecot
